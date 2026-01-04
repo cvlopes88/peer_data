@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEER DATA LLC - Network Engineering Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #004c99;
+            --secondary: #00a3e0;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --accent: #00d4ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 150px 0 100px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-item {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            transition: border-color 0.3s;
+        }
+
+        .expertise-item:hover {
+            border-color: var(--accent);
+        }
+
+        .expertise-item h4 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .services-grid,
+            .expertise-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">PEER <span>DATA</span> LLC</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Enterprise Network Engineering Solutions</h1>
+            <p class="tagline">Fortinet NSE4 & Cisco CCNA Certified Expert</p>
+            <p>Professional network infrastructure design, implementation, and management for businesses of all sizes. Specializing in Fortinet and Cisco technologies, Microsoft Active Directory, SD-WAN deployments, and comprehensive security solutions.</p>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive network engineering solutions tailored to your business needs</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Firewall Management</h3>
+                    <p>Expert configuration and management of Fortinet FortiGate firewalls, security policies, and advanced threat protection to safeguard your network infrastructure.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>SD-WAN Deployment</h3>
+                    <p>Design and implement secure SD-WAN solutions for optimized connectivity across multiple sites, improving performance and reducing costs.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Network Infrastructure</h3>
+                    <p>Complete network design, installation, and configuration services including switches, routers, and wireless access points for reliable connectivity.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Network Monitoring</h3>
+                    <p>Proactive monitoring and management of network performance, security events, and system health to ensure maximum uptime and reliability.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>FortiManager Solutions</h3>
+                    <p>Centralized management platform implementation for multi-site Fortinet deployments, streamlining configuration and policy management.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Network Optimization</h3>
+                    <p>Performance tuning, capacity planning, and infrastructure upgrades to ensure your network meets current and future business demands.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🪟</div>
+                    <h3>Microsoft Active Directory</h3>
+                    <p>Complete AD infrastructure services including domain controller setup, Group Policy management, user/group administration, and Windows Server configuration.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>Cisco Network Solutions</h3>
+                    <p>CCNA-certified expertise in Cisco switches, routers, and wireless infrastructure. Configuration, troubleshooting, and optimization of Cisco network equipment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-subtitle">Specialized knowledge in enterprise network technologies</p>
+            
+            <div class="expertise-grid">
+                <div class="expertise-item">
+                    <h4>Fortinet Technologies</h4>
+                    <p>NSE4 Certified • FortiGate • FortiManager • FortiAnalyzer</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Cisco Technologies</h4>
+                    <p>CCNA Certified • Switches • Routers • Wireless • IOS Configuration</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Microsoft Windows</h4>
+                    <p>Active Directory • Group Policy • Windows Server • PowerShell</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Network Security</h4>
+                    <p>IPS/IDS • VPN • SSL Inspection • Threat Protection</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>SD-WAN</h4>
+                    <p>Multi-site Connectivity • Path Selection • Performance Optimization</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Network Architecture</h4>
+                    <p>Design • Implementation • Documentation • Best Practices</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Automation</h4>
+                    <p>Python Scripting • PowerShell • Network Automation</p>
+                </div>
+
+                <div class="expertise-item">
+                    <h4>Global Infrastructure</h4>
+                    <p>Multi-site Management • International Deployments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose PEER DATA LLC</h2>
+            <p class="section-subtitle">Experience and expertise you can trust</p>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-number">2x</div>
+                    <h3>Dual Certified</h3>
+                    <p>Fortinet NSE4 and Cisco CCNA certified with hands-on enterprise experience</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-number">15+</div>
+                    <h3>Global Sites</h3>
+                    <p>Experience managing infrastructure across North America, Europe, and Asia-Pacific</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-number">100%</div>
+                    <h3>Dedicated</h3>
+                    <p>Professional service with personalized attention to your network needs</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-number">24/7</div>
+                    <h3>Support Available</h3>
+                    <p>Responsive communication and support for critical infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Let's Build Something Great</h2>
+                <p class="section-subtitle">Ready to enhance your network infrastructure? Get in touch today.</p>
+                
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:info@peerdatallc.com">info@peerdatallc.com</a></p>
+                    <p><strong>Website:</strong> <a href="https://peerdatallc.com">peerdatallc.com</a></p>
+                </div>
+                
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:info@peerdatallc.com" class="cta-button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PEER DATA LLC. All rights reserved. | Professional Network Engineering Solutions</p>
+        </div>
+    </footer>
+</body>
+</html>
